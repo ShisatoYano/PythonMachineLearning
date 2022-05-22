@@ -1,6 +1,5 @@
 pandas
 numpy
-pyqt5
 matplotlib
 seaborn
 flake8
