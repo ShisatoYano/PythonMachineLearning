@@ -52,21 +52,21 @@ Select this repository's folder
 
 ### 4. Build container
 Building container will start  
-![](docs/img/starting_container.PNG)  
+![](docs/img/starting_container.png)  
 
 After buidling, installing python libraries will start  
-![](docs/img/pip_install.PNG)  
+![](docs/img/pip_install.png)  
 
 Installation will finish as follow  
-![](docs/img/install_finish.PNG)  
+![](docs/img/install_finish.png)  
 
 ### 5. Confirmation
 Open terminal and confirm Python's version  
-![](docs/img/terminal_python_version.PNG)  
+![](docs/img/terminal_python_version.png)  
 
 Execute sample code  
 The following graph window will be shown  
-![](docs/img/sample_code.PNG)  
+![](docs/img/sample_code.png)  
 
 ## Reference
 * [VcXsrvの自動起動](https://qiita.com/nab/items/d4e6eb54815a993382af) 
