@@ -1,0 +1,43 @@
+{
+    "name": "PythonMachineLearning",
+    "context": "..",
+    "dockerFile": "Dockerfile",
+
+    "settings": {
+        "terminal.integrated.profiles.linux": {
+            "bash": {
+                "path": "bash",
+                "args": ["-l"],
+                "icon": "terminal-bash"
+            }
+        },
+        "workbench.editor.enablePreview": false,
+        "python.linting.pylintEnabled": false,
+        "python.linting.flake8Enabled": true,
+        "python.linting.flake8Args": [
+            "--ignore=E402,E501"
+        ],
+        "python.formatting.provider": "autopep8",
+        "python.formatting.autopep8Args": [
+            "--ignore",
+            "E405,E501",
+            "--max-line-length",
+            "150"
+        ]
+    },
+
+    "extensions": [
+        "mhutchie.git-graph",
+        "eamodio.gitlens",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "CoenraadS.bracket-pair-colorizer-2",
+        "shd101wyy.markdown-preview-enhanced"
+    ],
+
+    "runArgs": [
+		"--privileged"
+	],
+
+    "postCreateCommand": "pip install -r requirements.txt"
+}
