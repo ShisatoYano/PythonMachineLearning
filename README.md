@@ -38,17 +38,17 @@ execute xlaunch.exe
 
 ### 2. Open root directory with VSCode
 Open root directory of this repository with VSCode  
-![](docs/img/open_root_directory.PNG)  
+![](docs/img/open_root_directory.png)  
 
 ### 3. Open folder in container  
 Click the following icon  
-![](docs/img/open_remote_window.PNG)  
+![](docs/img/open_remote_window.png)  
 
 When you open for the first time, select "Open Folder in Container"  
-![](docs/img/open_folder_in_container.PNG)  
+![](docs/img/open_folder_in_container.png)  
 
 Select this repository's folder  
-![](docs/img/select_this_folder.PNG)  
+![](docs/img/select_this_folder.png)  
 
 ### 4. Build container
 Building container will start  
