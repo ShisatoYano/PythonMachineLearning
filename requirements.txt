@@ -1,0 +1,16 @@
+pandas
+numpy
+pyqt5
+matplotlib
+seaborn
+flake8
+autopep8
+pytest
+scikit-learn
+opencv-python
+opencv-contrib-python
+tensorflow-gpu
+keras
+janome
+networkx
+wordcloud
