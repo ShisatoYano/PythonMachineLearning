@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.filedialog as tkfd
 import pandas as pd
+import matplotlib.pyplot as plt
 
 root = tk.Tk()
 root.withdraw()
@@ -21,3 +22,25 @@ print(bank_df.info())
 # check dataframe include null
 print(bank_df.isnull().any(axis=1))  # row direction
 print(bank_df.isnull().any(axis=0))  # column direction
+
+# check how many null is included in dataframe
+print(bank_df.isnull().sum(axis=1))  # row direction
+print(bank_df.isnull().sum(axis=0))  # column direction
+
+# calculate statistical value of each item
+print(bank_df.describe())
+
+# visualize data
+# histogram
+plt.hist(bank_df["age"])
+plt.xlabel("age")
+plt.ylabel("freq")
+
+# scatter
+plt.scatter(bank_df["age"], bank_df["balance"])
+plt.xlabel("age")
+plt.ylabel("balance")
+# calculate correlation coefficient
+print(bank_df[["age", "balance"]].corr())
+
+plt.show()
