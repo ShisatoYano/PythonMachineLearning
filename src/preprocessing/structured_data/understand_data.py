@@ -32,15 +32,25 @@ print(bank_df.describe())
 
 # visualize data
 # histogram
-plt.hist(bank_df["age"])
-plt.xlabel("age")
-plt.ylabel("freq")
+# plt.hist(bank_df["age"])
+# plt.xlabel("age")
+# plt.ylabel("freq")
 
 # scatter
-plt.scatter(bank_df["age"], bank_df["balance"])
-plt.xlabel("age")
-plt.ylabel("balance")
+# plt.scatter(bank_df["age"], bank_df["balance"])
+# plt.xlabel("age")
+# plt.ylabel("balance")
 # calculate correlation coefficient
 print(bank_df[["age", "balance"]].corr())
+
+# pie char
+# count number of value
+print(bank_df["job"].value_counts(ascending=False, normalize=True))
+job_label = bank_df["job"].value_counts(ascending=False, normalize=True).index
+print(job_label)
+job_value = bank_df["job"].value_counts(ascending=False, normalize=True).values
+print(job_value)
+plt.pie(job_value, labels=job_label)
+plt.axis("equal")
 
 plt.show()
