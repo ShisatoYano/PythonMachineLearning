@@ -43,7 +43,7 @@ print(bank_df.describe())
 # calculate correlation coefficient
 print(bank_df[["age", "balance"]].corr())
 
-# pie char
+# pie chart
 # count number of value
 print(bank_df["job"].value_counts(ascending=False, normalize=True))
 job_label = bank_df["job"].value_counts(ascending=False, normalize=True).index
