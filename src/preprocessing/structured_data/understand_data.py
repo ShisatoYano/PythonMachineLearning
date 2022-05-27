@@ -50,7 +50,17 @@ job_label = bank_df["job"].value_counts(ascending=False, normalize=True).index
 print(job_label)
 job_value = bank_df["job"].value_counts(ascending=False, normalize=True).values
 print(job_value)
-plt.pie(job_value, labels=job_label)
-plt.axis("equal")
+# plt.pie(job_value, labels=job_label)
+# plt.axis("equal")
+
+# box plot
+y_yes = bank_df[bank_df['y'] == 'yes']
+y_no = bank_df[bank_df['y'] == 'no']
+y_age = [y_yes["age"], y_no["age"]]
+plt.boxplot(y_age)
+plt.xlabel('y')
+plt.ylabel('age')
+ax = plt.gca()
+plt.setp(ax, xticklabels=['yes', 'no'])
 
 plt.show()
