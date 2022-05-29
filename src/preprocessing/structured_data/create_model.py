@@ -9,6 +9,9 @@ from imblearn.over_sampling import RandomOverSampler
 from sklearn.model_selection import KFold
 from sklearn import tree
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import precision_score
+from sklearn.model_selection import GridSearchCV
 
 root = tk.Tk()
 root.withdraw()
@@ -47,3 +50,26 @@ for train_id, test_id in kf.split(X_us):
 # calculate score
 scores = np.array(scores)
 print(scores.mean(), scores.std())
+print(recall_score(Y_us[test_id], pred_y))
+print(precision_score(Y_us[test_id], pred_y))
+
+# optimize parameters by grid search
+params = {
+    "criterion": ["entropy"],
+    "max_depth": [2, 4, 6, 8, 10],
+    "min_samples_leaf": [10, 20, 30, 40, 50],
+}
+clf_gs = GridSearchCV(tree.DecisionTreeClassifier(),
+                      params,
+                      cv=KFold(n_splits=10, shuffle=True),
+                      scoring="accuracy")
+clf_gs.fit(X_us, Y_us)
+print(clf_gs.best_score_)
+print(clf_gs.best_params_)
+
+# create model by using best parameters
+clf_best = tree.DecisionTreeClassifier(
+    criterion="entropy", max_depth=6, min_samples_leaf=20
+)
+clf_best.fit(X_us, Y_us)
+print(clf_best.feature_importances_)
