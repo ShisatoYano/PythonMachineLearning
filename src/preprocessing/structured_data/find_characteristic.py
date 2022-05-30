@@ -1,7 +1,7 @@
 import tkinter as tk
 import tkinter.filedialog as tkfd
 import pandas as pd
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 root = tk.Tk()
 root.withdraw()
@@ -19,3 +19,9 @@ mc = MinMaxScaler()
 mc.fit(bank_df)
 bank_df_mc = pd.DataFrame(mc.transform(bank_df), columns=bank_df.columns)
 print(bank_df_mc)
+
+# z transformation
+sc = StandardScaler()
+sc.fit(bank_df)
+bank_df_sc = pd.DataFrame(sc.transform(bank_df), columns=bank_df.columns)
+print(bank_df_sc)
