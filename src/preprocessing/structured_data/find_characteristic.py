@@ -20,7 +20,7 @@ mc.fit(bank_df)
 bank_df_mc = pd.DataFrame(mc.transform(bank_df), columns=bank_df.columns)
 print(bank_df_mc)
 
-# z transformation
+# z-score normalization
 sc = StandardScaler()
 sc.fit(bank_df)
 bank_df_sc = pd.DataFrame(sc.transform(bank_df), columns=bank_df.columns)
