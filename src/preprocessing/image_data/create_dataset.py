@@ -45,23 +45,30 @@ print(img_set.head())
 # gray scale image
 img = cv2.imread("/workspaces/PythonMachineLearning/preprocess_sample_data/chap5/data/data/ants/VietnameseAntMimicSpider.jpg", 0)
 ret, bin_img = cv2.threshold(img, 128, 255, cv2.THRESH_BINARY)
-plt.imshow(bin_img, cmap="gray")
+# plt.imshow(bin_img, cmap="gray")
 
 # erosion
 kernel = np.ones((3, 3), np.uint8)
 img_el = cv2.erode(bin_img, kernel, iterations=1)
-plt.imshow(img_el, cmap="gray")
+# plt.imshow(img_el, cmap="gray")
 
 # dilation
 img_dl = cv2.dilate(bin_img, kernel, iterations=1)
-plt.imshow(img_dl, cmap="gray")
+# plt.imshow(img_dl, cmap="gray")
 
 # opening
 img_op = cv2.morphologyEx(bin_img, cv2.MORPH_OPEN, kernel)
-plt.imshow(img_op, cmap="gray")
+# plt.imshow(img_op, cmap="gray")
 
 # closing
 img_cl = cv2.morphologyEx(bin_img, cv2.MORPH_CLOSE, kernel)
-plt.imshow(img_cl, cmap="gray")
+# plt.imshow(img_cl, cmap="gray")
+
+# histogram
+hist_gr, bins = np.histogram(img.ravel(), 256, [0, 256])
+plt.xlim(0, 255)
+plt.plot(hist_gr, "-r")
+plt.xlabel("pixel value")
+plt.ylabel("number of pixels")
 
 plt.show()
