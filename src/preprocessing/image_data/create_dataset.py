@@ -4,6 +4,7 @@ import os
 import cv2
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 root = tk.Tk()
 root.withdraw()
@@ -39,3 +40,14 @@ labels_df = labels_df.rename(columns={0: "label"})
 
 img_set = pd.concat([pixels_df, labels_df], axis=1)
 print(img_set.head())
+
+# morphological transformation
+# erosion
+img = cv2.imread("/workspaces/PythonMachineLearning/preprocess_sample_data/chap5/data/data/ants/VietnameseAntMimicSpider.jpg", 0)
+ret, bin_img = cv2.threshold(img, 128, 255, cv2.THRESH_BINARY)
+plt.imshow(bin_img, cmap="gray")
+kernel = np.ones((3, 3), np.uint8)
+img_el = cv2.erode(bin_img, kernel, iterations=1)
+plt.imshow(img_el, cmap="gray")
+
+plt.show()
