@@ -42,12 +42,18 @@ img_set = pd.concat([pixels_df, labels_df], axis=1)
 print(img_set.head())
 
 # morphological transformation
-# erosion
+# gray scale image
 img = cv2.imread("/workspaces/PythonMachineLearning/preprocess_sample_data/chap5/data/data/ants/VietnameseAntMimicSpider.jpg", 0)
 ret, bin_img = cv2.threshold(img, 128, 255, cv2.THRESH_BINARY)
 plt.imshow(bin_img, cmap="gray")
+
+# erosion
 kernel = np.ones((3, 3), np.uint8)
 img_el = cv2.erode(bin_img, kernel, iterations=1)
 plt.imshow(img_el, cmap="gray")
+
+# dilation
+img_dl = cv2.dilate(bin_img, kernel, iterations=1)
+plt.imshow(img_dl, cmap="gray")
 
 plt.show()
