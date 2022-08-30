@@ -56,4 +56,12 @@ plt.imshow(img_el, cmap="gray")
 img_dl = cv2.dilate(bin_img, kernel, iterations=1)
 plt.imshow(img_dl, cmap="gray")
 
+# opening
+img_op = cv2.morphologyEx(bin_img, cv2.MORPH_OPEN, kernel)
+plt.imshow(img_op, cmap="gray")
+
+# closing
+img_cl = cv2.morphologyEx(bin_img, cv2.MORPH_CLOSE, kernel)
+plt.imshow(img_cl, cmap="gray")
+
 plt.show()
