@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.manifold import TSNE
 
 root = tk.Tk()
 root.withdraw()
@@ -66,9 +67,12 @@ img_cl = cv2.morphologyEx(bin_img, cv2.MORPH_CLOSE, kernel)
 
 # histogram
 hist_gr, bins = np.histogram(img.ravel(), 256, [0, 256])
-plt.xlim(0, 255)
-plt.plot(hist_gr, "-r")
-plt.xlabel("pixel value")
-plt.ylabel("number of pixels")
+# plt.xlim(0, 255)
+# plt.plot(hist_gr, "-r")
+# plt.xlabel("pixel value")
+# plt.ylabel("number of pixels")
+
+# t-sne
+tsne = TSNE(n_components=2) # instance to compress 2-dimension
 
 plt.show()
