@@ -1,3 +1,4 @@
+from cProfile import label
 import tkinter as tk
 import tkinter.filedialog as tkfd
 import os
@@ -6,6 +7,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
+from sklearn import model_selection
 
 root = tk.Tk()
 root.withdraw()
@@ -82,15 +84,26 @@ print(img_set_tsne.head)
 
 img_set_tsne_0 = img_set_tsne[img_set_tsne["label"] == 0]
 img_set_tsne_0 = img_set_tsne_0.drop("label", axis=1)
-plt.scatter(img_set_tsne_0[0], img_set_tsne_0[1], c="red", label=0)
+# plt.scatter(img_set_tsne_0[0], img_set_tsne_0[1], c="red", label=0)
 
 img_set_tsne_1 = img_set_tsne[img_set_tsne["label"] == 1]
 img_set_tsne_1 = img_set_tsne_1.drop("label", axis=1)
-plt.scatter(img_set_tsne_1[0], img_set_tsne_1[1], c="blue", label=1)
+# plt.scatter(img_set_tsne_1[0], img_set_tsne_1[1], c="blue", label=1)
 
-plt.xlabel("1st-comp")
-plt.ylabel("2nd-comp")
-plt.legend()
-plt.grid()
+# plt.xlabel("1st-comp")
+# plt.ylabel("2nd-comp")
+# plt.legend()
+# plt.grid()
+
+# split data into train, test data
+pixels = np.array(pixels) / 255
+pixels = pixels.reshape([-1, 128, 128, 1])
+labels = np.array(labels)
+print(pixels[0].shape)  # size of an image is (lon, lat, ch)
+print(labels[0])
+# 80%: train data, 20%: test data
+train_x, test_x, train_y, test_y = model_selection.train_test_split(pixels, labels, test_size=0.2)
+print(len(train_y))
+print(len(test_y))
 
 plt.show()
