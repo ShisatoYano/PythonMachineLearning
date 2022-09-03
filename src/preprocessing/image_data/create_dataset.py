@@ -106,4 +106,22 @@ train_x, test_x, train_y, test_y = model_selection.train_test_split(pixels, labe
 print(len(train_y))
 print(len(test_y))
 
+# reversal
+x_img = cv2.flip(img, 0)  # up/down
+y_img = cv2.flip(img, 1)  # right/left
+xy_img = cv2.flip(img, -1)  # up/down/right/left
+
+# smoothing
+blur_img = cv2.blur(img, (5, 5))
+gau_img = cv2.GaussianBlur(img, (5, 5), 0)
+med_img = cv2.medianBlur(img, 5)
+
+# changing brightness
+gamma = 0.5  # coefficient to change brightness
+# store result of adjustment into array
+lut = np.zeros((256, 1), dtype="uint8")
+for i in range(len(lut)):
+    lut[i][0] = 255 * pow((float(i) / 255), (1.0 / gamma))
+gamma_img = cv2.LUT(img, lut)
+
 plt.show()
