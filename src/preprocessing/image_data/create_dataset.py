@@ -73,6 +73,24 @@ hist_gr, bins = np.histogram(img.ravel(), 256, [0, 256])
 # plt.ylabel("number of pixels")
 
 # t-sne
-tsne = TSNE(n_components=2) # instance to compress 2-dimension
+tsne = TSNE(n_components=2)  # instance to compress 2-dimension
+pixels_tsne = tsne.fit_transform(pixels_df)
+print(pixels_df.shape)
+print(pixels_tsne.shape)
+img_set_tsne = pd.concat([pd.DataFrame(pixels_tsne), labels_df], axis=1)
+print(img_set_tsne.head)
+
+img_set_tsne_0 = img_set_tsne[img_set_tsne["label"] == 0]
+img_set_tsne_0 = img_set_tsne_0.drop("label", axis=1)
+plt.scatter(img_set_tsne_0[0], img_set_tsne_0[1], c="red", label=0)
+
+img_set_tsne_1 = img_set_tsne[img_set_tsne["label"] == 1]
+img_set_tsne_1 = img_set_tsne_1.drop("label", axis=1)
+plt.scatter(img_set_tsne_1[0], img_set_tsne_1[1], c="blue", label=1)
+
+plt.xlabel("1st-comp")
+plt.ylabel("2nd-comp")
+plt.legend()
+plt.grid()
 
 plt.show()
