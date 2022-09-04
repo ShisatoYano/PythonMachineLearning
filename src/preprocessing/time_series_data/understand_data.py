@@ -1,6 +1,6 @@
 import pandas as pd
 
-data_df = pd.read_csv("/workspaces/PythonMachineLearning/preprocess_sample_data/chap6/data/data/energydata.csv")
+data_df = pd.read_csv("/workspaces/PythonMachineLearning/preprocess_sample_data/chap6/data/data/energydata.csv", sep=',')
 print(data_df.head())
 
 # data's shape
@@ -24,6 +24,6 @@ print(data_df[["date", "cum_min"]].head())
 # calculate statistics
 print(data_df.describe())
 
-# find and complement Nan
+# find Nan
 print(data_df.isnull().sum(axis=1).sort_values(ascending=False))
 print(data_df.isnull().sum(axis=0))
