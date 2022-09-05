@@ -21,6 +21,14 @@ print(data_df["dif_min"].head())
 data_df["cum_min"] = data_df["dif_min"].cumsum()
 print(data_df[["date", "cum_min"]].head())
 
+# minute to hour
+data_df["cum_hour"] = (data_df["cum_min"] / 60).round(2).astype(int)
+print(data_df[["date", "cum_min", "cum_hour"]].head(10))
+
+# mean, std by 1 hour
+print(data_df.groupby("cum_hour").mean())
+print(data_df.groupby("cum_hour").std())
+
 # calculate statistics
 print(data_df.describe())
 
