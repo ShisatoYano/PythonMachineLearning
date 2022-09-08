@@ -19,3 +19,9 @@ print(data_df[["date", "cum_min", "cum_6hour"]].head(50))
 data_df = data_df.drop(["date", "dif_min", "cum_min"], axis=1)
 data_df_mean = data_df.groupby("cum_6hour").mean()
 print(data_df_mean.head())
+data_df_std = data_df.groupby("cum_6hour").std()
+print(data_df_std.head())
+
+# merge
+data_features = pd.merge(data_df_mean, data_df_std, left_index=True, right_index=True)
+print(data_features.head())
