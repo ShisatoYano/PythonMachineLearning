@@ -73,8 +73,14 @@ hist = model.fit(train_vec, train_vec, batch_size=128,
 
 # predict
 pred = model.predict(test_vec)
-plt.plot(test_vec[:, 0], label="test")
-plt.plot(pred[:, 0], label="pred")
-plt.legend()
+# plt.plot(test_vec[:, 0], label="test")
+# plt.plot(pred[:, 0], label="pred")
+# plt.legend()
+
+# score
+dist = test_vec[:, 0] - pred[:, 0]
+dist = pow(dist, 2)
+dist = dist / np.max(dist)
+plt.plot(dist)
 
 plt.show()
