@@ -1,9 +1,11 @@
 import os
 import re
 import pandas as pd
+import numpy as np
 from janome.tokenizer import Tokenizer
 from janome.analyzer import Analyzer
 from janome.tokenfilter import POSKeepFilter
+from sklearn.feature_extraction.text import CountVectorizer
 
 
 base_dir = "/workspaces/PythonMachineLearning/preprocess_sample_data/chap7/data/data/"
@@ -40,3 +42,14 @@ for i, sub_dir in enumerate(sub_dirs):
 
 print(pd.DataFrame(docterm).head())
 print(docterm[0])
+
+# term-document matrix
+cv = CountVectorizer()
+docterm_cv = cv.fit_transform(np.array(docterm))
+docterm_cnt = docterm_cv.toarray()
+print(pd.DataFrame(docterm_cnt).head())
+
+# descending order
+word_count_pairs = []
+docterm_wcnt = np.sum(a=docterm_cnt, axis=0)
+print(docterm_wcnt)
