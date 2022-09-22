@@ -52,4 +52,8 @@ print(pd.DataFrame(docterm_cnt).head())
 # descending order
 word_count_pairs = []
 docterm_wcnt = np.sum(a=docterm_cnt, axis=0)
-print(docterm_wcnt)
+for word, count in zip(cv.get_feature_names(), docterm_wcnt):
+    word_count_pairs.append([word, count])
+word_count_df = pd.DataFrame(word_count_pairs)
+word_count_df = word_count_df.sort_values(1, ascending=False)
+print(word_count_df.head())
