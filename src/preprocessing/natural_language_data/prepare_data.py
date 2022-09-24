@@ -6,6 +6,7 @@ from janome.tokenizer import Tokenizer
 from janome.analyzer import Analyzer
 from janome.tokenfilter import POSKeepFilter
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 base_dir = "/workspaces/PythonMachineLearning/preprocess_sample_data/chap7/data/data/"
@@ -63,3 +64,9 @@ cv = CountVectorizer(min_df=0.01, max_df=0.5)
 docterm_cv = cv.fit_transform(np.array(docterm))
 docterm_cnt = docterm_cv.toarray()
 print(pd.DataFrame(docterm_cnt).head())
+
+# tf-idf
+tv = TfidfVectorizer(min_df=0.01, max_df=0.5, sublinear_tf=True)
+docterm_tv = tv.fit_transform(np.array(docterm))
+docterm_tfidf = docterm_tv.toarray()
+print(pd.DataFrame(docterm_tfidf).head())
