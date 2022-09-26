@@ -28,7 +28,7 @@ for i, sub_dir in enumerate(sub_dirs):
         txt = f.read()
 
         reg_txt = re.sub(r"[0-9a-zA-Z]+", '', txt)
-        reg_txt = re.sub(r"[:;/+\.~]", '', reg_txt)
+        reg_txt = re.sub(r"[:;/+\.-]", '', reg_txt)
         reg_txt = re.sub(r"[\s\n]", '', reg_txt)
 
         for token in a.analyze(reg_txt):
