@@ -1,9 +1,11 @@
 import os
 import re
 import pandas as pd
+import numpy as np
 from janome.tokenizer import Tokenizer
 from janome.analyzer import Analyzer
 from janome.tokenfilter import POSKeepFilter
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 base_dir = "/workspaces/PythonMachineLearning/preprocess_sample_data/chap7/data/data/"
@@ -40,3 +42,8 @@ for i, sub_dir in enumerate(sub_dirs):
 
 print(pd.DataFrame(docterm).head())
 print(docterm[0])
+
+tv = TfidfVectorizer(min_df=0.05, max_df=0.5, sublinear_tf=True)
+docterm_tv = tv.fit_transform(np.array(docterm))
+docterm_tfidf = docterm_tv.toarray()
+print(pd.DataFrame(docterm_tfidf).head())
