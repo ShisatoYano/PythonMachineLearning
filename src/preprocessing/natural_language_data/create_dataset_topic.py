@@ -1,4 +1,5 @@
 import os
+from pydoc import doc
 import re
 import pandas as pd
 import numpy as np
@@ -6,6 +7,7 @@ from janome.tokenizer import Tokenizer
 from janome.analyzer import Analyzer
 from janome.tokenfilter import POSKeepFilter
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 base_dir = "/workspaces/PythonMachineLearning/preprocess_sample_data/chap7/data/data/"
@@ -53,3 +55,9 @@ label = pd.DataFrame(label)
 label = label.rename(columns={0: "label"})
 docterm_df = pd.concat([docterm_tfidf, label], axis=1)
 print(docterm_df.head())
+
+docterm_0 = docterm_df[docterm_df["label"] == 0]
+docterm_0 = docterm_0.drop("label", axis=1)
+sim_0 = cosine_similarity(docterm_0.T)
+sim_0_df = pd.DataFrame(sim_0)
+print(sim_0_df.head())
