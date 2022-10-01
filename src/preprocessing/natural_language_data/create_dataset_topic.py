@@ -66,3 +66,18 @@ index = pd.Series(sim_0_stack.index.values)
 value = pd.Series(sim_0_stack.values)
 print(index.head())
 print(value.head())
+
+tmp3 = []
+tmp4 = []
+for i in range(len(index)):
+    if 0.5 <= value[i] <= 0.9:
+        tmp1 = str(index[i][0]) + ' ' + str(index[i][0])
+        tmp2 = [int(s) for s in tmp1.split()]
+        tmp3.append(tmp2)
+        tmp4 = np.append(tmp4, value[i])
+tmp3 = pd.DataFrame(tmp3)
+tmp3 = tmp3.rename(columns={0: "node1", 1: "node2"})
+tmp4 = pd.DataFrame(tmp4)
+tmp4 = tmp4.rename(columns={0: "weight"})
+sim_0_list = pd.concat([tmp3, tmp4], axis=1)
+print(sim_0_list.head())
